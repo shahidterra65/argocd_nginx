@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1 
+kind: Application 
+metadata: 
+  name: nginx-demo 
+  namespace: argocd 
+  labels: 
+    environment: demo 
+spec: 
+  project: default 
+  source: 
+    repoURL: https://github.com/shahidterra65/argocd_nginx.git  # Replace with your GitHub repo 
+
+    targetRevision: main 
+    path: web  # Path to Kubernetes manifests 
+  destination: 
+    server: https://kubernetes.default.svc  # Local cluster 
+    namespace: web 
+  syncPolicy: 
+    automated: 
+      prune: true      # Remove resources deleted from Git 
+      selfHeal: true   # Correct manual changes automatically 
+    retry: 
+      limit: 3         # Retry failed syncs up to 3 times 
+    syncOptions: 
+      - CreateNamespace=true  # Auto-create target namespace 

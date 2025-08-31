@@ -1,29 +1,29 @@
-apiVersion: v1
+# apiVersion: v1
 
-kind: Service
+# kind: Service
 
-metadata:
+# metadata:
 
-  name: apache
+#   name: apache
 
-  namespace: apache
+#   namespace: apache
 
-spec:
+# spec:
 
-  type: NodePort
+#   type: NodePort
 
-  selector:
+#   selector:
 
-    app: apache
+#     app: apache
 
-  ports:
+#   ports:
 
-    - name: http
+#     - name: http
 
-      port: 80
+#       port: 80
 
-      targetPort: 80
+#       targetPort: 80
 
-      nodePort: 30082
+#       nodePort: 30082
 
  
